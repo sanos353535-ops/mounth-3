@@ -1,0 +1,36 @@
+from datetime import datetime
+
+import flet as ft
+
+
+def app(page: ft.Page):
+    plain_text = ft.Text(value="Hello world!")
+   
+  
+
+   
+
+   
+    
+
+    def change(e):
+        txt = user_input.value.strip()
+        user_input.value = ""
+       
+        date = datetime.now().strftime("%Y-%m-%d - %H:%M:%S")
+
+        if txt:
+            plain_text.color = None
+            plain_text.value = f"{date} Hello {txt}"
+        else:
+            plain_text.value = "Введите правильное имя!"
+            plain_text.color = ft.Colors.RED
+
+    
+    btn = ft.TextButton("Отправить", on_click=change)
+
+    user_input = ft.TextField(label="Enter name", on_submit=change)
+    page.add(plain_text,user_input, btn , )
+
+
+ft.app(app)
